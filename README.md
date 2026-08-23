@@ -2,12 +2,14 @@
 
 Personal config, kept in sync across machines.
 
-## Install on a new machine
+## Install (or update) -- one command
 
 ```sh
-git clone https://github.com/oilu23/dotfiles.git ~/dotfiles
-~/dotfiles/install.sh
+if [ -d ~/dotfiles ]; then git -C ~/dotfiles pull; else git clone https://github.com/oilu23/dotfiles.git ~/dotfiles; fi && ~/dotfiles/install.sh
 ```
+
+Safe to paste repeatedly: it clones the first time, pulls after that, and
+re-linking is a no-op.
 
 `install.sh` symlinks the files into `$HOME`. Anything real that was already
 there gets moved to `~/.dotfiles-backup/<timestamp>/` rather than deleted.
